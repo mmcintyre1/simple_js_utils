@@ -1,9 +1,8 @@
-import { readFile } from 'fs'
+const fs = require("fs");
 
-readFile('.\\data\\test_data.txt', (err, data) => {
-  if (err) {
-    console.error(err)
-    return
-  }
-  console.log(data)
-})
+const data = fs.readFileSync("./data/test_data.txt", { encoding: 'utf8', flag: 'r' })
+  .toString()
+  .split('\r\n')
+
+data.map(item => item.trim())
+console.log(data)
